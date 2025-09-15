@@ -3,7 +3,7 @@ import { ArrowRight, PlayCircle } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-white">
       <div className="relative z-10 container mx-auto px-6 text-center text-foreground">
         <div className="max-w-4xl mx-auto">
           {/* Badge */}
