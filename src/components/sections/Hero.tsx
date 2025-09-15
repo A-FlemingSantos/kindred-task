@@ -37,6 +37,15 @@ export const Hero = () => {
             </Button>
           </div>
           
+          {/* Trust indicators */}
+          <div className="mt-16 text-muted-foreground">
+            <p className="text-sm mb-4">Confiado por mais de 1.000 equipes em todo o Brasil</p>
+            <div className="flex justify-center items-center space-x-8 opacity-60">
+              <span className="text-sm font-semibold">Startup Inc.</span>
+              <span className="text-sm font-semibold">Tech Solutions</span>
+              <span className="text-sm font-semibold">Creative Agency</span>
+            </div>
+          </div>
         </div>
       </div>
       
