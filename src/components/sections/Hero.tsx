@@ -33,7 +33,7 @@ export const Hero = () => {
             
             <Button variant="outline" size="lg">
               <PlayCircle className="mr-2 h-5 w-5" />
-              Ver Demonstração
+              Entrar
             </Button>
           </div>
           
