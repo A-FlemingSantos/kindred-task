@@ -26,12 +26,12 @@ export const Hero = () => {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="default" size="lg" className="w-full sm:w-64 group">
+            <Button variant="default" size="lg" className="w-full sm:w-[200px] group">
               Começar Gratuitamente
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
             
-            <Button variant="outline" size="lg" className="w-full sm:w-64">
+            <Button variant="outline" size="lg" className="w-full sm:w-[200px]">
               Entrar
             </Button>
           </div>
