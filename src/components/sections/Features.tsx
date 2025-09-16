@@ -3,6 +3,7 @@ import { Users, Target, BarChart3, Clock, Shield, Zap } from "lucide-react";
 import collaborationImg from "@/assets/feature-collaboration.jpg";
 import tasksImg from "@/assets/feature-tasks.jpg";
 import analyticsImg from "@/assets/feature-analytics.jpg";
+import { useInView } from "@/hooks/useInView";
 
 const mainFeatures = [
   {
@@ -44,8 +45,15 @@ const additionalFeatures = [
 ];
 
 export const Features = () => {
+  const [ref, isInView] = useInView();
+  
   return (
-    <section className="py-24 bg-gradient-card">
+    <section 
+      ref={ref}
+      className={`py-24 bg-gradient-card transition-all duration-1000 ${
+        isInView ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'
+      }`}
+    >
       <div className="container mx-auto px-6">
         {/* Section header */}
         <div className="text-center mb-20">
