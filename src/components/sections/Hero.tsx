@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, PlayCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const Hero = () => {
   return (
@@ -31,8 +31,7 @@ export const Hero = () => {
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
             
-            <Button variant="outline" size="lg">
-              <PlayCircle className="mr-2 h-5 w-5" />
+            <Button variant="outline" size="lg" className="min-w-[200px]">
               Entrar
             </Button>
           </div>
