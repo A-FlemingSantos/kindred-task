@@ -13,8 +13,10 @@ export const Hero = () => {
           
           {/* Main heading */}
           <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight text-foreground">
-            Agilize o Trabalho em 
-            <span className="text-primary">Equipe</span> de Qualquer Lugar
+            <span className="bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
+              Agilize o Trabalho em 
+            </span>
+            <span className="text-primary block">Equipe</span>
           </h1>
           
           {/* Subtitle */}
