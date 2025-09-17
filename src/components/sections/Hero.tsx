@@ -13,10 +13,10 @@ export const Hero = () => {
           
           {/* Main heading */}
           <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight text-foreground">
-            <span className="bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
-              Agilize o Trabalho em 
+            Transforme Suas
+            <span className="block bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
+              Ideias em Realidade
             </span>
-            <span className="text-primary block">Equipe</span>
           </h1>
           
           {/* Subtitle */}
@@ -26,12 +26,12 @@ export const Hero = () => {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="default" size="lg" className="w-full sm:w-[150px] group">
+            <Button variant="default" size="lg" className="w-full sm:w-64 group">
               Começar Gratuitamente
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
             
-            <Button variant="outline" size="lg" className="w-full sm:w-[150px]">
+            <Button variant="outline" size="lg" className="w-full sm:w-64">
               Entrar
             </Button>
           </div>
