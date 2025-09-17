@@ -21,7 +21,7 @@ export const Hero = () => {
           
           {/* Subtitle */}
           <p className="text-xl md:text-2xl mb-12 text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            A plataforma completa de gerenciamento de projetos para pequenas equipes que querem crescer sem complicações
+            Feito para pequenas equipes que querem crescer sem complicações
           </p>
           
           {/* CTA Buttons */}
