@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Lock, Mail, Sparkles } from "lucide-react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -17,59 +17,119 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent"></div>
+      </div>
+      
+      {/* Floating orbs */}
+      <div className="absolute top-20 left-20 w-32 h-32 bg-white/10 rounded-full blur-xl animate-pulse"></div>
+      <div className="absolute bottom-20 right-20 w-40 h-40 bg-primary/20 rounded-full blur-2xl animate-pulse delay-700"></div>
+      <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-secondary/15 rounded-full blur-lg animate-pulse delay-300"></div>
+
+      <div className="w-full max-w-md relative z-10">
         {/* Back button */}
-        <Link to="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-6">
+        <Link 
+          to="/" 
+          className="inline-flex items-center text-sm text-white/80 hover:text-white mb-8 transition-colors duration-300 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 hover:bg-white/20"
+        >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Voltar para página inicial
         </Link>
 
-        <Card>
-          <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl text-center">Entrar</CardTitle>
-            <CardDescription className="text-center">
-              Entre com seu email e senha para acessar sua conta
+        <Card className="shadow-strong bg-gradient-card backdrop-blur-sm border-0 overflow-hidden animate-fade-in-up">
+          {/* Decorative header gradient */}
+          <div className="h-2 bg-gradient-primary"></div>
+          
+          <CardHeader className="space-y-4 pb-6">
+            <div className="flex justify-center">
+              <div className="relative">
+                <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg"></div>
+                <div className="relative bg-gradient-primary p-4 rounded-full shadow-medium">
+                  <Lock className="h-6 w-6 text-white" />
+                </div>
+              </div>
+            </div>
+            <CardTitle className="text-3xl text-center font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              Bem-vindo de volta!
+            </CardTitle>
+            <CardDescription className="text-center text-muted-foreground text-base">
+              Entre com seus dados e continue sua jornada
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
+          
+          <CardContent className="px-8 pb-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="seu@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
+                <Label htmlFor="email" className="text-sm font-semibold text-foreground">Email</Label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="seu@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="pl-10 h-12 bg-background/50 border-2 border-border hover:border-primary/50 focus:border-primary transition-all duration-300 rounded-lg"
+                  />
+                </div>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password">Senha</Label>
-                <Input
-                  id="password"
-                  type="password"
-                  placeholder="••••••••"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
+                <Label htmlFor="password" className="text-sm font-semibold text-foreground">Senha</Label>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="••••••••"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="pl-10 h-12 bg-background/50 border-2 border-border hover:border-primary/50 focus:border-primary transition-all duration-300 rounded-lg"
+                  />
+                </div>
               </div>
-              <Button type="submit" className="w-full">
-                Entrar
+              
+              <div className="text-right">
+                <Link 
+                  to="/esqueceu-senha" 
+                  className="text-sm text-primary hover:text-primary-dark transition-colors duration-300 font-medium"
+                >
+                  Esqueceu sua senha?
+                </Link>
+              </div>
+              
+              <Button 
+                type="submit" 
+                className="w-full h-12 bg-gradient-primary hover:shadow-strong transform hover:-translate-y-0.5 transition-all duration-300 text-white font-semibold text-base rounded-lg border-0"
+              >
+                <Sparkles className="mr-2 h-5 w-5" />
+                Entrar na minha conta
               </Button>
             </form>
           </CardContent>
-          <CardFooter className="flex flex-col space-y-4">
-            <div className="text-sm text-center text-muted-foreground">
-              Não tem uma conta?{" "}
-              <Link to="/cadastro" className="text-primary hover:underline">
-                Cadastre-se aqui
+          
+          <CardFooter className="bg-muted/30 px-8 py-6 border-t">
+            <div className="text-sm text-center text-muted-foreground w-full">
+              Novo por aqui?{" "}
+              <Link 
+                to="/cadastro" 
+                className="text-primary hover:text-primary-dark transition-colors duration-300 font-semibold hover:underline"
+              >
+                Crie sua conta gratuitamente
               </Link>
             </div>
           </CardFooter>
         </Card>
+        
+        {/* Trust indicator */}
+        <div className="mt-8 text-center">
+          <p className="text-white/60 text-sm">
+            🔒 Seus dados estão protegidos com criptografia de ponta
+          </p>
+        </div>
       </div>
     </div>
   );

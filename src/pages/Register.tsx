@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, User, Mail, Lock, Check, Sparkles, Zap } from "lucide-react";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -32,86 +32,203 @@ const Register = () => {
     console.log("Registration attempt:", formData);
   };
 
-  return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        {/* Back button */}
-        <Link to="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-6">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Voltar para página inicial
-        </Link>
+  const benefits = [
+    "Gerenciamento ilimitado de projetos",
+    "Colaboração em tempo real",
+    "Relatórios e analytics avançados",
+    "Suporte prioritário 24/7"
+  ];
 
-        <Card>
-          <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl text-center">Cadastrar</CardTitle>
-            <CardDescription className="text-center">
-              Crie sua conta gratuitamente e comece a gerenciar projetos hoje mesmo
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="name">Nome completo</Label>
-                <Input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="Seu nome completo"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                />
+  return (
+    <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 opacity-40">
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/3 to-transparent"></div>
+      </div>
+      
+      {/* Floating elements */}
+      <div className="absolute top-10 right-10 w-36 h-36 bg-white/10 rounded-full blur-xl animate-pulse delay-1000"></div>
+      <div className="absolute bottom-10 left-10 w-28 h-28 bg-secondary/20 rounded-full blur-2xl animate-pulse delay-500"></div>
+      <div className="absolute top-1/3 right-1/4 w-20 h-20 bg-primary/15 rounded-full blur-lg animate-pulse delay-200"></div>
+
+      <div className="w-full max-w-5xl relative z-10 flex gap-8 items-center">
+        {/* Left side - Benefits */}
+        <div className="hidden lg:flex flex-col space-y-8 flex-1">
+          <div className="text-white">
+            <h2 className="text-4xl font-bold mb-4 leading-tight">
+              Comece sua jornada de
+              <span className="block bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+                produtividade hoje!
+              </span>
+            </h2>
+            <p className="text-xl text-white/80 mb-8 leading-relaxed">
+              Junte-se a milhares de equipes que já transformaram sua forma de trabalhar
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {benefits.map((benefit, index) => (
+              <div 
+                key={index} 
+                className="flex items-center space-x-3 text-white/90 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20"
+                style={{ animationDelay: `${index * 200}ms` }}
+              >
+                <div className="bg-secondary p-1.5 rounded-full">
+                  <Check className="h-4 w-4 text-white" />
+                </div>
+                <span className="font-medium">{benefit}</span>
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="seu@email.com"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                />
+            ))}
+          </div>
+        </div>
+
+        {/* Right side - Form */}
+        <div className="w-full max-w-md lg:max-w-lg">
+          {/* Back button */}
+          <Link 
+            to="/" 
+            className="inline-flex items-center text-sm text-white/80 hover:text-white mb-8 transition-colors duration-300 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 hover:bg-white/20"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Voltar para página inicial
+          </Link>
+
+          <Card className="shadow-strong bg-gradient-card backdrop-blur-sm border-0 overflow-hidden animate-fade-in-up">
+            {/* Decorative header gradient */}
+            <div className="h-2 bg-gradient-to-r from-primary via-secondary to-primary"></div>
+            
+            <CardHeader className="space-y-4 pb-6">
+              <div className="flex justify-center">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-secondary/20 rounded-full blur-lg"></div>
+                  <div className="relative bg-gradient-to-r from-primary to-secondary p-4 rounded-full shadow-medium">
+                    <Zap className="h-6 w-6 text-white" />
+                  </div>
+                </div>
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="password">Senha</Label>
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="••••••••"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  required
-                />
+              <CardTitle className="text-3xl text-center font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Criar conta gratuita
+              </CardTitle>
+              <CardDescription className="text-center text-muted-foreground text-base">
+                Configure sua conta em menos de 2 minutos
+              </CardDescription>
+            </CardHeader>
+            
+            <CardContent className="px-8 pb-6">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="space-y-2">
+                  <Label htmlFor="name" className="text-sm font-semibold text-foreground">Nome completo</Label>
+                  <div className="relative">
+                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                    <Input
+                      id="name"
+                      name="name"
+                      type="text"
+                      placeholder="Seu nome completo"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="pl-10 h-12 bg-background/50 border-2 border-border hover:border-primary/50 focus:border-primary transition-all duration-300 rounded-lg"
+                    />
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-sm font-semibold text-foreground">Email profissional</Label>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="seu@empresa.com"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="pl-10 h-12 bg-background/50 border-2 border-border hover:border-primary/50 focus:border-primary transition-all duration-300 rounded-lg"
+                    />
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="password" className="text-sm font-semibold text-foreground">Senha</Label>
+                    <div className="relative">
+                      <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                      <Input
+                        id="password"
+                        name="password"
+                        type="password"
+                        placeholder="••••••••"
+                        value={formData.password}
+                        onChange={handleInputChange}
+                        required
+                        className="pl-10 h-12 bg-background/50 border-2 border-border hover:border-primary/50 focus:border-primary transition-all duration-300 rounded-lg"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="confirmPassword" className="text-sm font-semibold text-foreground">Confirmar</Label>
+                    <div className="relative">
+                      <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                      <Input
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        type="password"
+                        placeholder="••••••••"
+                        value={formData.confirmPassword}
+                        onChange={handleInputChange}
+                        required
+                        className="pl-10 h-12 bg-background/50 border-2 border-border hover:border-primary/50 focus:border-primary transition-all duration-300 rounded-lg"
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="text-xs text-muted-foreground bg-muted/30 p-3 rounded-lg">
+                  <p>Ao criar sua conta, você concorda com nossos Termos de Uso e Política de Privacidade.</p>
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  className="w-full h-12 bg-gradient-to-r from-primary to-secondary hover:shadow-strong transform hover:-translate-y-0.5 transition-all duration-300 text-white font-semibold text-base rounded-lg border-0"
+                >
+                  <Sparkles className="mr-2 h-5 w-5" />
+                  Criar minha conta gratuita
+                </Button>
+              </form>
+            </CardContent>
+            
+            <CardFooter className="bg-muted/30 px-8 py-6 border-t">
+              <div className="text-sm text-center text-muted-foreground w-full">
+                Já é membro?{" "}
+                <Link 
+                  to="/login" 
+                  className="text-primary hover:text-primary-dark transition-colors duration-300 font-semibold hover:underline"
+                >
+                  Faça login aqui
+                </Link>
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="confirmPassword">Confirmar senha</Label>
-                <Input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type="password"
-                  placeholder="••••••••"
-                  value={formData.confirmPassword}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <Button type="submit" className="w-full">
-                Criar conta gratuitamente
-              </Button>
-            </form>
-          </CardContent>
-          <CardFooter className="flex flex-col space-y-4">
-            <div className="text-sm text-center text-muted-foreground">
-              Já tem uma conta?{" "}
-              <Link to="/login" className="text-primary hover:underline">
-                Entrar aqui
-              </Link>
+            </CardFooter>
+          </Card>
+          
+          {/* Trust indicators */}
+          <div className="mt-6 flex justify-center items-center space-x-6 text-white/60 text-sm">
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-secondary rounded-full"></div>
+              <span>SSL seguro</span>
             </div>
-          </CardFooter>
-        </Card>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-secondary rounded-full"></div>
+              <span>LGPD compliance</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-secondary rounded-full"></div>
+              <span>Sem cartão</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
