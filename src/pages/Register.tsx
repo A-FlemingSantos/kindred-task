@@ -40,28 +40,25 @@ const Register = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-white flex items-center justify-center p-4 relative overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute inset-0 opacity-40">
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/3 to-transparent"></div>
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-10 right-10 w-36 h-36 bg-primary/15 rounded-full blur-xl"></div>
+        <div className="absolute bottom-10 left-10 w-28 h-28 bg-primary/20 rounded-full blur-2xl"></div>
+        <div className="absolute top-1/3 right-1/4 w-20 h-20 bg-primary/10 rounded-full blur-lg"></div>
       </div>
-      
-      {/* Floating elements */}
-      <div className="absolute top-10 right-10 w-36 h-36 bg-white/10 rounded-full blur-xl animate-pulse delay-1000"></div>
-      <div className="absolute bottom-10 left-10 w-28 h-28 bg-secondary/20 rounded-full blur-2xl animate-pulse delay-500"></div>
-      <div className="absolute top-1/3 right-1/4 w-20 h-20 bg-primary/15 rounded-full blur-lg animate-pulse delay-200"></div>
 
       <div className="w-full max-w-5xl relative z-10 flex gap-8 items-center">
         {/* Left side - Benefits */}
         <div className="hidden lg:flex flex-col space-y-8 flex-1">
-          <div className="text-white">
+          <div className="text-foreground">
             <h2 className="text-4xl font-bold mb-4 leading-tight">
               Comece sua jornada de
-              <span className="block bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+              <span className="block text-primary">
                 produtividade hoje!
               </span>
             </h2>
-            <p className="text-xl text-white/80 mb-8 leading-relaxed">
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               Junte-se a milhares de equipes que já transformaram sua forma de trabalhar
             </p>
           </div>
@@ -70,10 +67,10 @@ const Register = () => {
             {benefits.map((benefit, index) => (
               <div 
                 key={index} 
-                className="flex items-center space-x-3 text-white/90 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20"
+                className="flex items-center space-x-3 text-foreground bg-primary/5 p-4 rounded-xl border border-primary/20"
                 style={{ animationDelay: `${index * 200}ms` }}
               >
-                <div className="bg-secondary p-1.5 rounded-full">
+                <div className="bg-primary p-1.5 rounded-full">
                   <Check className="h-4 w-4 text-white" />
                 </div>
                 <span className="font-medium">{benefit}</span>
@@ -87,26 +84,26 @@ const Register = () => {
           {/* Back button */}
           <Link 
             to="/" 
-            className="inline-flex items-center text-sm text-white/80 hover:text-white mb-8 transition-colors duration-300 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 hover:bg-white/20"
+            className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-8 transition-colors duration-300 bg-primary/5 px-4 py-2 rounded-full border border-primary/20 hover:bg-primary/10"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Voltar para página inicial
           </Link>
 
-          <Card className="shadow-strong bg-gradient-card backdrop-blur-sm border-0 overflow-hidden animate-fade-in-up">
-            {/* Decorative header gradient */}
-            <div className="h-2 bg-gradient-to-r from-primary via-secondary to-primary"></div>
+          <Card className="shadow-strong bg-card border border-border overflow-hidden animate-fade-in-up">
+            {/* Decorative header */}
+            <div className="h-2 bg-primary"></div>
             
             <CardHeader className="space-y-4 pb-6">
               <div className="flex justify-center">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-secondary/20 rounded-full blur-lg"></div>
-                  <div className="relative bg-gradient-to-r from-primary to-secondary p-4 rounded-full shadow-medium">
+                  <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg"></div>
+                  <div className="relative bg-primary p-4 rounded-full shadow-medium">
                     <Zap className="h-6 w-6 text-white" />
                   </div>
                 </div>
               </div>
-              <CardTitle className="text-3xl text-center font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              <CardTitle className="text-3xl text-center font-bold text-primary">
                 Criar conta gratuita
               </CardTitle>
               <CardDescription className="text-center text-muted-foreground text-base">
@@ -192,7 +189,7 @@ const Register = () => {
                 
                 <Button 
                   type="submit" 
-                  className="w-full h-12 bg-gradient-to-r from-primary to-secondary hover:shadow-strong transform hover:-translate-y-0.5 transition-all duration-300 text-white font-semibold text-base rounded-lg border-0"
+                  className="w-full h-12 bg-primary hover:bg-primary/90 hover:shadow-strong transform hover:-translate-y-0.5 transition-all duration-300 text-white font-semibold text-base rounded-lg border-0"
                 >
                   <Sparkles className="mr-2 h-5 w-5" />
                   Criar minha conta gratuita
@@ -214,17 +211,17 @@ const Register = () => {
           </Card>
           
           {/* Trust indicators */}
-          <div className="mt-6 flex justify-center items-center space-x-6 text-white/60 text-sm">
+          <div className="mt-6 flex justify-center items-center space-x-6 text-muted-foreground text-sm">
             <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-secondary rounded-full"></div>
+              <div className="w-2 h-2 bg-primary rounded-full"></div>
               <span>SSL seguro</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-secondary rounded-full"></div>
+              <div className="w-2 h-2 bg-primary rounded-full"></div>
               <span>LGPD compliance</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-secondary rounded-full"></div>
+              <div className="w-2 h-2 bg-primary rounded-full"></div>
               <span>Sem cartão</span>
             </div>
           </div>
