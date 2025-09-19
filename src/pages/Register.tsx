@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,6 +13,7 @@ const Register = () => {
     password: "",
     confirmPassword: ""
   });
+  const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -29,7 +30,8 @@ const Register = () => {
       alert("As senhas não coincidem");
       return;
     }
-    console.log("Registration attempt:", formData);
+    // Simular cadastro bem-sucedido
+    navigate("/dashboard");
   };
 
   const benefits = [
