@@ -4,7 +4,14 @@ import { Link } from "react-router-dom";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-white">
+    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-background">
+      {/* Blur effect background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 -left-20 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 -right-20 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl"></div>
+      </div>
+      
       <div className="relative z-10 container mx-auto px-6 text-center text-foreground">
         <div className="max-w-4xl mx-auto">
           {/* Badge */}
