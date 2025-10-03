@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-background">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
       {/* Blur effect background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 -left-20 w-[600px] h-[600px] bg-blue-500/40 rounded-full blur-3xl animate-pulse"></div>
