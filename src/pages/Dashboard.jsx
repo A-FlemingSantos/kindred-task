@@ -172,146 +172,85 @@ export default function Dashboard() {
           </header>
 
           {/* Main Content */}
-          <main className="flex-1 p-6 space-y-6">
-            {/* Welcome Section */}
+          <main className="flex-1 p-8 space-y-8 overflow-auto">
+            {/* Header */}
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-2xl font-bold text-foreground">Bem-vindo de volta!</h2>
-                <p className="text-muted-foreground">Aqui está o resumo dos seus projetos</p>
+                <h2 className="text-3xl font-bold text-foreground">Área de Trabalho</h2>
+                <p className="text-muted-foreground mt-1">Gerencie seus projetos de forma eficiente</p>
               </div>
-              <Button>
-                <Plus className="w-4 h-4 mr-2" />
+              <Button size="lg" className="shadow-md">
+                <Plus className="w-5 h-5 mr-2" />
                 Novo Projeto
               </Button>
             </div>
 
-            {/* Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Projetos Ativos</CardTitle>
-                  <FolderOpen className="w-4 h-4 text-muted-foreground" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold text-primary">8</div>
-                  <p className="text-xs text-muted-foreground">
-                    <TrendingUp className="w-3 h-3 inline mr-1" />
-                    +2 desde ontem
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Tarefas Pendentes</CardTitle>
-                  <CheckSquare className="w-4 h-4 text-muted-foreground" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold text-primary">23</div>
-                  <p className="text-xs text-muted-foreground">
-                    <Activity className="w-3 h-3 inline mr-1" />
-                    5 prioritárias
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Membros da Equipe</CardTitle>
-                  <Users className="w-4 h-4 text-muted-foreground" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold text-primary">12</div>
-                  <p className="text-xs text-muted-foreground">
-                    <Activity className="w-3 h-3 inline mr-1" />
-                    8 ativos agora
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Taxa de Conclusão</CardTitle>
-                  <BarChart3 className="w-4 h-4 text-muted-foreground" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold text-primary">87%</div>
-                  <p className="text-xs text-muted-foreground">
-                    <TrendingUp className="w-3 h-3 inline mr-1" />
-                    +5% este mês
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Recent Projects and Tasks */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Recent Projects */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Projetos Recentes</CardTitle>
-                  <CardDescription>Acompanhe o progresso dos seus projetos</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {recentProjects.map((project) => (
-                      <div key={project.id} className="flex items-center justify-between p-3 rounded-lg border border-border hover:bg-accent/50 transition-colors">
-                        <div className="flex-1">
-                          <h4 className="font-medium text-foreground">{project.name}</h4>
-                          <div className="flex items-center space-x-2 mt-1">
-                            <Badge 
-                              variant={project.status === "Concluído" ? "default" : 
-                                     project.status === "Em Andamento" ? "secondary" : "outline"}
-                            >
-                              {project.status}
-                            </Badge>
-                            <span className="text-sm text-muted-foreground">
-                              {project.team} membros
-                            </span>
-                          </div>
-                          <div className="mt-2 w-full bg-secondary/20 rounded-full h-2">
-                            <div 
-                              className="bg-primary h-2 rounded-full transition-all"
-                              style={{ width: `${project.progress}%` }}
-                            />
-                          </div>
-                        </div>
+            {/* Recentes Section */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-semibold text-foreground">Recentes</h3>
+                <Button variant="ghost" size="sm">Ver todos</Button>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {recentProjects.map((project) => (
+                  <Card 
+                    key={project.id} 
+                    className="group hover:shadow-elegant transition-all duration-300 cursor-pointer border-border/50 hover:border-primary/30 overflow-hidden"
+                  >
+                    <CardHeader className="space-y-3 pb-4">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center shadow-md">
+                        <FolderOpen className="w-6 h-6 text-white" />
                       </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Recent Tasks */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Tarefas Urgentes</CardTitle>
-                  <CardDescription>Tarefas que precisam de atenção</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    {tasks.map((task) => (
-                      <div key={task.id} className="flex items-center justify-between p-3 rounded-lg border border-border hover:bg-accent/50 transition-colors">
-                        <div className="flex-1">
-                          <h4 className="font-medium text-foreground">{task.title}</h4>
-                          <div className="flex items-center space-x-2 mt-1">
-                            <Badge 
-                              variant={task.priority === "Alta" ? "destructive" : 
-                                     task.priority === "Média" ? "secondary" : "outline"}
-                            >
-                              {task.priority}
-                            </Badge>
-                            <div className="flex items-center text-sm text-muted-foreground">
-                              <Clock className="w-3 h-3 mr-1" />
-                              {task.dueDate}
-                            </div>
-                          </div>
-                        </div>
+                      <div>
+                        <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                          {project.name}
+                        </CardTitle>
+                        <CardDescription className="mt-1">
+                          {project.team} membros da equipe
+                        </CardDescription>
                       </div>
-                    ))}
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <Badge 
+                          variant={project.status === "Concluído" ? "default" : 
+                                 project.status === "Em Andamento" ? "secondary" : "outline"}
+                          className="shadow-sm"
+                        >
+                          {project.status}
+                        </Badge>
+                        <span className="text-sm font-medium text-primary">
+                          {project.progress}%
+                        </span>
+                      </div>
+                      <div className="w-full bg-secondary/30 rounded-full h-2 overflow-hidden">
+                        <div 
+                          className="bg-gradient-primary h-2 rounded-full transition-all duration-500 shadow-sm"
+                          style={{ width: `${project.progress}%` }}
+                        />
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+                
+                {/* Add New Project Card */}
+                <Card className="group hover:shadow-elegant transition-all duration-300 cursor-pointer border-dashed border-2 border-border/50 hover:border-primary/50 bg-muted/20 flex items-center justify-center min-h-[240px]">
+                  <div className="text-center space-y-3 p-6">
+                    <div className="w-12 h-12 mx-auto rounded-xl bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                      <Plus className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-foreground group-hover:text-primary transition-colors">
+                        Novo Projeto
+                      </p>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Clique para criar
+                      </p>
+                    </div>
                   </div>
-                </CardContent>
-              </Card>
+                </Card>
+              </div>
             </div>
           </main>
         </div>
