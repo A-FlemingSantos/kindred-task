@@ -16,9 +16,6 @@ import {
   TrendingUp,
   Activity
 } from "lucide-react";
-import projectWebsiteImg from "@/assets/project-website-redesign.jpg";
-import projectMobileImg from "@/assets/project-mobile-app.jpg";
-import projectMarketingImg from "@/assets/project-marketing.jpg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -55,9 +52,9 @@ const sidebarItems = [
 ];
 
 const recentProjects = [
-  { id: 1, name: "Redesign Website", status: "Em Andamento", progress: 75, team: 4, image: projectWebsiteImg },
-  { id: 2, name: "App Mobile", status: "Concluído", progress: 100, team: 3, image: projectMobileImg },
-  { id: 3, name: "Marketing Q4", status: "Planejamento", progress: 25, team: 5, image: projectMarketingImg },
+  { id: 1, name: "Redesign Website", status: "Em Andamento", progress: 75, team: 4 },
+  { id: 2, name: "App Mobile", status: "Concluído", progress: 100, team: 3 },
+  { id: 3, name: "Marketing Q4", status: "Planejamento", progress: 25, team: 5 },
 ];
 
 const tasks = [
@@ -199,55 +196,41 @@ export default function Dashboard() {
                 {recentProjects.map((project) => (
                   <Card 
                     key={project.id} 
-                    className="group hover:shadow-elegant transition-all duration-300 cursor-pointer border-border/50 hover:border-primary/30 overflow-hidden p-0"
+                    className="group hover:shadow-elegant transition-all duration-300 cursor-pointer border-border/50 hover:border-primary/30 overflow-hidden"
                   >
-                    {/* Project Image */}
-                    <div className="relative h-40 overflow-hidden bg-gradient-to-br from-primary/10 to-primary/5">
-                      <img 
-                        src={project.image} 
-                        alt={project.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                    </div>
-
-                    {/* Project Content */}
-                    <CardContent className="p-4 space-y-3">
+                    <CardHeader className="space-y-3 pb-4">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center shadow-md">
+                        <FolderOpen className="w-6 h-6 text-white" />
+                      </div>
                       <div>
-                        <CardTitle className="text-lg group-hover:text-primary transition-colors line-clamp-1">
+                        <CardTitle className="text-lg group-hover:text-primary transition-colors">
                           {project.name}
                         </CardTitle>
+                        <CardDescription className="mt-1">
+                          {project.team} membros da equipe
+                        </CardDescription>
                       </div>
-
-                      {/* Progress Bar */}
-                      <div className="space-y-1.5">
-                        <div className="flex items-center justify-between text-sm">
-                          <span className="text-muted-foreground">Progresso</span>
-                          <span className="font-medium text-primary">{project.progress}%</span>
-                        </div>
-                        <div className="w-full bg-secondary/30 rounded-full h-1.5 overflow-hidden">
-                          <div 
-                            className="bg-gradient-primary h-1.5 rounded-full transition-all duration-500"
-                            style={{ width: `${project.progress}%` }}
-                          />
-                        </div>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <Badge 
+                          variant={project.status === "Concluído" ? "default" : 
+                                 project.status === "Em Andamento" ? "secondary" : "outline"}
+                          className="shadow-sm"
+                        >
+                          {project.status}
+                        </Badge>
+                        <span className="text-sm font-medium text-primary">
+                          {project.progress}%
+                        </span>
+                      </div>
+                      <div className="w-full bg-secondary/30 rounded-full h-2 overflow-hidden">
+                        <div 
+                          className="bg-gradient-primary h-2 rounded-full transition-all duration-500 shadow-sm"
+                          style={{ width: `${project.progress}%` }}
+                        />
                       </div>
                     </CardContent>
-
-                    {/* Bottom Info Bar */}
-                    <div className="flex items-center justify-between px-4 py-3 bg-muted/30 border-t border-border/50">
-                      <Badge 
-                        variant={project.status === "Concluído" ? "default" : 
-                               project.status === "Em Andamento" ? "secondary" : "outline"}
-                        className="text-xs"
-                      >
-                        {project.status}
-                      </Badge>
-                      <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                        <Users className="w-3.5 h-3.5" />
-                        <span>{project.team}</span>
-                      </div>
-                    </div>
                   </Card>
                 ))}
                 
