@@ -16,10 +16,10 @@ public class Perfil {
     @Column(length = 50, nullable = false)
     private String nome;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = true)
     private String sobrenome;
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 20, nullable = true)
     private String telefone;
 
     @Column(length = 255, nullable = false)

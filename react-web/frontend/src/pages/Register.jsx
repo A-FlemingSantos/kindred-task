@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, User, Mail, Lock, Check, Sparkles, Zap } from "lucide-react";
+import api from "@/lib/api";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -22,16 +23,40 @@ const Register = () => {
       [name]: value
     }));
   };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle registration logic here
     if (formData.password !== formData.confirmPassword) {
       alert("As senhas não coincidem");
       return;
     }
-    // Simular cadastro bem-sucedido
-    navigate("/dashboard");
+
+    try {
+      // Preparar dados para enviar ao backend
+      const perfilData = {
+        nome: formData.name,
+        email: formData.email,
+        senha: formData.password
+      };
+
+      // Fazer requisição POST para o endpoint
+      const response = await api.post('/perfil', perfilData);
+      
+      // Sucesso - navegar para o dashboard
+      console.log('Perfil criado com sucesso:', response.data);
+      alert('Cadastro realizado com sucesso!');
+      navigate("/dashboard");
+    } catch (error) {
+      // Tratamento de erro
+      console.error('Erro ao criar perfil:', error);
+      if (error.response) {
+        alert(`Erro ao cadastrar: ${error.response.data.message || 'Erro no servidor'}`);
+      } else if (error.request) {
+        alert('Erro de conexão. Verifique se o backend está rodando.');
+      } else {
+        alert('Erro ao processar cadastro. Tente novamente.');
+      }
+    }
   };
 
   const benefits = [
