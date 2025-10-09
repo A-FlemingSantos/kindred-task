@@ -6,6 +6,7 @@ import com.projectmanager.planthings.model.services.PerfilService;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/perfil")
+@CrossOrigin(origins = "http://localhost:5173")
 public class PerfilController {
     
     @Autowired
